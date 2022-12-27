@@ -62,23 +62,36 @@ function ChatList({ getSelectedUser, conversations, selected }) {
   const handleOnFocus = () => {
   }
 
-
-
-
-
-  const getAllConvo = () => {
+  const getAllUsers = () => {
     setLoader(true)
-    getConversationList()
+
+    getUserServices()
       .then(({ data } = data) => {
         setLoader(false)
         setItems(data)
       })
-      .catch((err) => { })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
+
+
+
+
+  // const getAllConvo = () => {
+  //   setLoader(true)
+  //   getConversationList()
+  //     .then(({ data } = data) => {
+  //       setLoader(false)
+  //       setItems(data)
+  //     })
+  //     .catch((err) => { })
+  // }
+
   useEffect(() => {
-    getAllConvo()
-    // getAllUsers()
+    // getAllConvo()
+    getAllUsers()
   }, [])
 
   const formatResult = (item) => {

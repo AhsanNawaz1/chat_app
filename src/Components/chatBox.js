@@ -96,10 +96,10 @@ function ChatBox({ selected, getSelectedUser, size }) {
   }, [socket])
 
   useEffect(() => {
-    if (msg.length > 0) {
-      setMessages([...messages, msg])
-    }
+    console.log("msg", msg)
+    setMessages([...messages, msg])
   }, [msg])
+  console.log("messages", messages)
 
 
 
@@ -209,7 +209,7 @@ function ChatBox({ selected, getSelectedUser, size }) {
             {loader ?
               <Animation />
               :
-              selected && messages?.map((i, inx) => {
+              selected && Object.keys(selected).length ? messages?.map((i, inx) => {
                 return (
                   <>
                     {messages.length > 0 && inx == 0 ?
@@ -250,7 +250,10 @@ function ChatBox({ selected, getSelectedUser, size }) {
                     }
                   </>
                 )
-              })
+              }) :
+                <div>
+                  Select/Search a member to chat
+                </div>
             }
           </div>
         </div>
